@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://ln0yyhfcfxi4"]
+
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1_player_scene"]
+[ext_resource type="Script" uid="uid://dmlbmt8measpe" path="res://scripts/world/world.gd" id="2_world_script"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/enemy.tscn" id="3_enemy_scene"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="4_hud_scene"]
+[ext_resource type="PackedScene" path="res://scenes/items/coin.tscn" id="5_coin_scene"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_top"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bottom"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_left"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_right"]
+normal = Vector2(-1, 0)
+
+[node name="World" type="Node2D" unique_id=966975989]
+script = ExtResource("2_world_script")
+
+[node name="Ground" type="ColorRect" parent="." unique_id=1685293647]
+offset_left = -917.0
+offset_top = -512.0
+offset_right = 1003.0
+offset_bottom = 568.0
+color = Color(0.12, 0.15, 0.13, 1)
+
+[node name="Grid" type="Node2D" parent="." unique_id=418534151]
+
+[node name="LineH1" type="Line2D" parent="Grid" unique_id=1424520598]
+points = PackedVector2Array(-960, -270, 960, -270)
+width = 2.0
+default_color = Color(0.2, 0.25, 0.22, 1)
+
+[node name="LineH2" type="Line2D" parent="Grid" unique_id=744832296]
+points = PackedVector2Array(-960, 0, 960, 0)
+width = 2.0
+default_color = Color(0.2, 0.25, 0.22, 1)
+
+[node name="LineH3" type="Line2D" parent="Grid" unique_id=50479530]
+points = PackedVector2Array(-960, 270, 960, 270)
+width = 2.0
+default_color = Color(0.2, 0.25, 0.22, 1)
+
+[node name="LineV1" type="Line2D" parent="Grid" unique_id=1555874010]
+points = PackedVector2Array(-480, -540, -480, 540)
+width = 2.0
+default_color = Color(0.2, 0.25, 0.22, 1)
+
+[node name="LineV2" type="Line2D" parent="Grid" unique_id=2081968311]
+points = PackedVector2Array(0, -540, 0, 540)
+width = 2.0
+default_color = Color(0.2, 0.25, 0.22, 1)
+
+[node name="LineV3" type="Line2D" parent="Grid" unique_id=1894267349]
+points = PackedVector2Array(480, -540, 480, 540)
+width = 2.0
+default_color = Color(0.2, 0.25, 0.22, 1)
+
+[node name="Player" parent="." unique_id=2143665953 instance=ExtResource("1_player_scene")]
+
+[node name="Enemy" parent="." unique_id=614371892 instance=ExtResource("3_enemy_scene")]
+position = Vector2(543, -42)
+
+[node name="Coin" parent="." unique_id=1335164174 instance=ExtResource("5_coin_scene")]
+position = Vector2(160, -80)
+
+[node name="Coin" parent="Coin" unique_id=862177849 instance=ExtResource("5_coin_scene")]
+position = Vector2(160, -80)
+
+[node name="Coin" parent="Coin/Coin" unique_id=1230606694 instance=ExtResource("5_coin_scene")]
+position = Vector2(160, -80)
+
+[node name="Coin2" parent="Coin" unique_id=1933816551 instance=ExtResource("5_coin_scene")]
+position = Vector2(160, -80)
+
+[node name="Coin" parent="Coin/Coin2" unique_id=36338415 instance=ExtResource("5_coin_scene")]
+position = Vector2(160, -80)
+
+[node name="Coin" parent="Coin/Coin2/Coin" unique_id=1935639280 instance=ExtResource("5_coin_scene")]
+position = Vector2(-434, 227)
+
+[node name="Coin2" parent="." unique_id=48491072 instance=ExtResource("5_coin_scene")]
+position = Vector2(-220, 140)
+
+[node name="Coin3" parent="." unique_id=605987894 instance=ExtResource("5_coin_scene")]
+position = Vector2(420, -180)
+
+[node name="Boundaries" type="StaticBody2D" parent="." unique_id=429952166]
+
+[node name="Top" type="CollisionShape2D" parent="Boundaries" unique_id=1870700467]
+position = Vector2(0, -540)
+shape = SubResource("WorldBoundaryShape2D_top")
+
+[node name="Bottom" type="CollisionShape2D" parent="Boundaries" unique_id=2115210730]
+position = Vector2(0, 540)
+shape = SubResource("WorldBoundaryShape2D_bottom")
+
+[node name="Left" type="CollisionShape2D" parent="Boundaries" unique_id=1924606511]
+position = Vector2(-960, 0)
+shape = SubResource("WorldBoundaryShape2D_left")
+
+[node name="Right" type="CollisionShape2D" parent="Boundaries" unique_id=1095785395]
+position = Vector2(960, 0)
+shape = SubResource("WorldBoundaryShape2D_right")
+
+[node name="HUD" parent="." unique_id=1825072044 instance=ExtResource("4_hud_scene")]
