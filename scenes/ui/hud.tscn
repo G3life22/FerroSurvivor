@@ -18,3 +18,16 @@ offset_top = 52.0
 offset_right = 220.0
 offset_bottom = 82.0
 text = "Moedas: 0"
+[node name="ExperienceLabel" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 84.0
+offset_right = 320.0
+offset_bottom = 114.0
+text = "Level: 1 | XP: 0 / 5"
+
+[node name="StatsLabel" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 116.0
+offset_right = 320.0
+offset_bottom = 146.0
+text = "Dano: 25 | Vida Max: 100"

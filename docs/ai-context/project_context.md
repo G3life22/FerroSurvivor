@@ -9,7 +9,12 @@ FerroSurvivor é um protótipo indie em Godot 4, estilo Vampire Survivors, com t
 - Sistema de HP
 - Ataque com espaço
 - Inimigo morre ao chegar em 0 HP
-- HUD mostrando HP e moedas
+- Inimigos possuem nível, HP escalável e XP dropado por nível
+- Inimigos dropam item de XP ao morrer
+- Player coleta XP ao encostar no item
+- Player sobe de level ao acumular XP suficiente
+- Level aumenta dano e vida máxima do player
+- HUD mostrando HP, moedas, level, XP e stats principais
 - Moedas coletáveis
 - Reinício da cena ao morrer
 
@@ -20,6 +25,8 @@ FerroSurvivor é um protótipo indie em Godot 4, estilo Vampire Survivors, com t
 - scripts/enemies/enemy.gd
 - scenes/items/coin.tscn
 - scripts/items/coin.gd
+- scenes/items/experience.tscn
+- scripts/items/experience.gd
 - scenes/ui/hud.tscn
 - scripts/ui/hud.gd
 - scenes/world/world.tscn
@@ -35,4 +42,4 @@ FerroSurvivor é um protótipo indie em Godot 4, estilo Vampire Survivors, com t
 - Atualizar ROADMAP.md quando concluir item do roadmap
 
 ## Próxima Feature Prioritária
-Spawn automático de inimigos usando o enemy.tscn existente.
+Spawn automático de inimigos usando o enemy.tscn existente. O spawn deve reutilizar `configure_level()` para criar inimigos de níveis diferentes quando necessário.

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/experience.gd" id="1_experience_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_experience"]
+radius = 12.0
+
+[node name="Experience" type="Area2D" groups=["experience"]]
+script = ExtResource("1_experience_script")
+
+[node name="Sprite" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.22, 0.72, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_experience")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

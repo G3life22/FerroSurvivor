@@ -23,79 +23,7 @@ Nenhum bug aberto.
 
 # TODO_PRIORITY_P1
 
-## [FEATURE] XP Crítico - Loot de Experiência
-STATUS: PENDING
-
-Objetivo:
-Quando um inimigo morre, ele deixa atrás de si um item de experiência que pode ser coletado pelo jogador.
-
-Componentes sugeridos:
-- scenes/items/experience.tscn
-- scripts/items/experience.gd
-- modificação em enemy.gd para gerar XP ao morrer
-- integração com HUD/world/player conforme arquitetura existente
-
-Requisitos:
-- XP aparece na posição onde o inimigo morreu
-- Player coleta XP ao encostar
-- Item de XP desaparece ao coletar
-- Não implementar level up ainda
-- Atualizar README.md e ROADMAP.md
-
-Benefícios:
-- Sistema de recompensa visível
-- Incentivo a farmar inimigos
-- Base para progressão de level
-
----
-
-## [FEATURE] Progressão de Level - Sistema de Stats
-STATUS: PENDING
-
-Objetivo:
-O jogador acumula XP, sobe de nível e ganha aumento de dano e vida máxima.
-
-Componentes sugeridos:
-- sistema de stats do player
-- funções para adicionar XP e verificar level up
-- HUD mostrando XP, level e stats principais
-
-Requisitos:
-- XP acumulado aumenta level
-- Level aumenta dano causado
-- Level aumenta vida máxima
-- HUD mostra level atual
-- Atualizar README.md e ROADMAP.md
-
-Benefícios:
-- Progressão clara
-- Incentivo a continuar jogando
-- Base para balanceamento
-
----
-
-## [FEATURE] Inimigos Escaláveis - Níveis de Inimigos
-STATUS: PENDING
-
-Objetivo:
-Inimigos possuem níveis que aumentam HP e XP dropado.
-
-Componentes sugeridos:
-- enemy.gd com variáveis level, max_hp e xp_value
-- spawn system capaz de gerar inimigos de níveis diferentes
-- indicação visual simples do nível, se possível
-
-Requisitos:
-- Inimigos de nível maior têm mais HP
-- Inimigos de nível maior dropam mais XP
-- XP base pode ser multiplicado pelo nível
-- Manter compatibilidade com spawn system
-- Atualizar README.md e ROADMAP.md
-
-Benefícios:
-- Dificuldade crescente
-- Mais variedade
-- Melhor equilíbrio conforme jogador evolui
+Nenhuma tarefa P1 pendente.
 
 ---
 
@@ -119,7 +47,49 @@ Balancear HP, dano, velocidade, spawn rate, XP e progressão.
 
 # READY_FOR_TEST
 
-Nenhuma tarefa aguardando teste.
+## [FEATURE] XP Crítico - Loot de Experiência
+STATUS: READY_FOR_TEST
+
+Objetivo:
+Quando um inimigo morre, ele deixa atrás de si um item de experiência que pode ser coletado pelo jogador.
+
+Implementado:
+- XP aparece na posição onde o inimigo morreu.
+- Player coleta XP ao encostar.
+- Item de XP desaparece ao coletar.
+- Level up ainda não abre escolhas de upgrade.
+- README.md e ROADMAP.md atualizados.
+
+---
+
+## [FEATURE] Progressão de Level - Sistema de Stats
+STATUS: READY_FOR_TEST
+
+Objetivo:
+O jogador acumula XP, sobe de nível e ganha aumento de dano e vida máxima.
+
+Implementado:
+- XP acumulado aumenta level.
+- Level aumenta dano causado.
+- Level aumenta vida máxima.
+- HUD mostra level atual, XP e stats principais.
+- README.md e ROADMAP.md atualizados.
+
+---
+
+## [FEATURE] Inimigos Escaláveis - Níveis de Inimigos
+STATUS: READY_FOR_TEST
+
+Objetivo:
+Inimigos possuem níveis que aumentam HP e XP dropado.
+
+Implementado:
+- Inimigos de nível maior têm mais HP.
+- Inimigos de nível maior dropam mais XP.
+- XP base é multiplicado pelo nível.
+- `configure_level()` mantém compatibilidade com futuros sistemas de spawn.
+- Indicação visual simples do nível aparece para inimigos acima do nível 1.
+- README.md e ROADMAP.md atualizados.
 
 ---
 

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 signal health_changed(current_health: int, max_health: int)
+signal experience_changed(current_experience: int, experience_to_next_level: int, level: int)
+signal stats_changed(level: int, attack_damage: int, max_health: int)
 signal died
 
 @export var speed: float = 260.0
@@ -8,8 +10,14 @@ signal died
 @export var attack_damage: int = 25
 @export var attack_cooldown: float = 0.35
 @export var attack_feedback_time: float = 0.12
+@export var experience_to_next_level: int = 5
+@export var experience_growth_per_level: int = 3
+@export var attack_damage_per_level: int = 5
+@export var max_health_per_level: int = 10
 
 var current_health: int
+var level: int = 1
+var current_experience: int = 0
 var _is_dead := false
 var _can_attack := true
 
@@ -24,6 +32,8 @@ func _ready() -> void:
 	attack_feedback_timer.wait_time = attack_feedback_time
 	attack_feedback.visible = false
 	health_changed.emit(current_health, max_health)
+	experience_changed.emit(current_experience, experience_to_next_level, level)
+	stats_changed.emit(level, attack_damage, max_health)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
@@ -36,6 +46,18 @@ func _physics_process(_delta: float) -> void:
 	var input_direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = input_direction * speed
 	move_and_slide()
+
+func add_experience(amount: int) -> void:
+	if _is_dead:
+		return
+
+	current_experience += amount
+
+	while current_experience >= experience_to_next_level:
+		current_experience -= experience_to_next_level
+		_level_up()
+
+	experience_changed.emit(current_experience, experience_to_next_level, level)
 
 func take_damage(amount: int) -> void:
 	if _is_dead:
@@ -59,6 +81,15 @@ func _attack() -> void:
 	for body in attack_area.get_overlapping_bodies():
 		if body.is_in_group("enemies") and body.has_method("take_damage"):
 			body.take_damage(attack_damage)
+
+func _level_up() -> void:
+	level += 1
+	experience_to_next_level += experience_growth_per_level
+	attack_damage += attack_damage_per_level
+	max_health += max_health_per_level
+	current_health = min(current_health + max_health_per_level, max_health)
+	health_changed.emit(current_health, max_health)
+	stats_changed.emit(level, attack_damage, max_health)
 
 func _die() -> void:
 	_is_dead = true
