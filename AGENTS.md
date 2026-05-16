@@ -59,3 +59,11 @@ Após implementar:
 
 ## Próxima Feature Prioritária
 Spawn automático de inimigos reutilizando enemy.tscn existente.
+
+## Ordem de Prioridade
+1. Ler BUGS.md primeiro.
+2. Se houver bug aberto, resolver o bug antes de qualquer feature.
+3. Se não houver bug aberto, pegar a primeira tarefa P1 do BACKLOG.md.
+4. Implementar apenas uma tarefa por vez.
+5. Após implementar, atualizar BUGS.md, BACKLOG.md, ROADMAP.md e README.md quando aplicável.
+6. Nunca iniciar próxima tarefa sem validação do usuário.
