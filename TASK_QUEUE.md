@@ -96,3 +96,24 @@ Implementado:
 # DONE
 
 Nenhuma tarefa concluída.
+
+## [P0][BUG] Moedas somem em grupo ao coletar uma
+STATUS: OPEN
+
+Descrição:
+Algumas moedas parecem estar vinculadas/duplicadas como gêmeas. Ao coletar uma moeda, outras moedas também somem.
+
+Resultado esperado:
+Somente a moeda coletada deve desaparecer.
+
+---
+
+## [P0][BUG] Spawn automático de inimigos não continua após matar o primeiro
+STATUS: OPEN
+
+Descrição:
+Só aparece 1 inimigo. Quando ele morre, não aparecem novos inimigos e o jogo para de gerar ameaça.
+
+Resultado esperado:
+Inimigos devem continuar aparecendo ao longo do tempo, respeitando limite máximo configurável.
+
